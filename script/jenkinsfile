@@ -1,0 +1,37 @@
+pipeline{
+    agent any
+    tools{
+     maven 'M2_HOME'
+    } 
+    stages{
+        stage("clean"){
+            steps{
+            sh 'mvn clean validate compile install test package'
+            }
+        }
+    }
+}
+
+/*
+
+        stage ('validate'){
+            steps{
+                sh 'terraform validate'
+            }
+        }
+    }
+    
+        stage ('format'){
+            steps{
+                sh 'terraform fmt'
+            }
+        }
+        stage ('plan'){
+            steps{
+                sh 'terraform plan -lock=false'
+            }
+        }
+    }
+
+}
+*/
